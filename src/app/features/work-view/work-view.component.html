@@ -99,17 +99,27 @@
               class="add-more-or-finish"
             >
               <div class="no-tasks-illu-wrapper">
-                <div class="inline-block-container">
+                <div class="empty-cat-picture">
                   <img
-                    class="show-light-only"
-                    src="assets/illu/horizon.svg"
-                    alt=""
+                    src="assets/eclipxse/cats/empty-list-loaf.png"
+                    [alt]="'ECLIPXSE.EMPTY_CAT_ALT' | translate"
+                    decoding="async"
                   />
-                  <img
-                    class="show-dark-only"
-                    src="assets/illu/horizon-dark.svg"
-                    alt=""
-                  />
+                  <span
+                    class="empty-workspace-star star-a"
+                    aria-hidden="true"
+                    >✦</span
+                  >
+                  <span
+                    class="empty-workspace-star star-b"
+                    aria-hidden="true"
+                    >⋆</span
+                  >
+                  <span
+                    class="empty-workspace-star star-c"
+                    aria-hidden="true"
+                    >♡</span
+                  >
                 </div>
                 <h2 class="no-tasks-label">
                   @if (
@@ -120,6 +130,9 @@
                     {{ T.WW.NO_PLANNED_TASKS | translate }}
                   }
                 </h2>
+                <p class="empty-cat-whisper">
+                  {{ 'ECLIPXSE.EMPTY_CAT' | translate }}
+                </p>
               </div>
 
               @if (!overdueTasks().length) {

@@ -55,5 +55,26 @@
 </div>
 
 @if (noTasksMsg() && !allTasksLength()) {
-  <div class="no-tasks">{{ noTasksMsg() }}</div>
+  <div class="no-tasks">
+    <div class="empty-cat-frame">
+      <img
+        src="assets/eclipxse/cats/empty-list-loaf.png"
+        [alt]="'ECLIPXSE.EMPTY_CAT_ALT' | translate"
+        loading="lazy"
+        decoding="async"
+      />
+      <span
+        class="empty-cat-star star-left"
+        aria-hidden="true"
+        >✦</span
+      >
+      <span
+        class="empty-cat-star star-right"
+        aria-hidden="true"
+        >⋆</span
+      >
+    </div>
+    <span class="no-tasks-message">{{ noTasksMsg() }}</span>
+    <span class="empty-cat-caption">{{ 'ECLIPXSE.EMPTY_CAT' | translate }}</span>
+  </div>
 }

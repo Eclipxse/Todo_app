@@ -45,10 +45,83 @@
 
 .no-tasks {
   @include center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-half);
   text-align: center;
-  width: 90%;
+  width: min(90%, 330px);
+  margin: var(--s2) auto;
+  padding: var(--s2);
+  border: 1px solid rgba(201, 47, 97, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 250, 252, 0.72);
+  box-shadow: 0 12px 30px rgba(110, 49, 74, 0.09);
 
   color: var(--text-color-muted);
+}
+
+.empty-cat-frame {
+  position: relative;
+  width: 132px;
+  height: 112px;
+  margin-bottom: var(--s-half);
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 61%;
+    border: 3px solid rgba(255, 255, 255, 0.82);
+    border-radius: 46% 46% 40% 40%;
+    box-shadow:
+      0 0 0 1px rgba(201, 47, 97, 0.12),
+      0 10px 24px rgba(110, 49, 74, 0.14);
+  }
+}
+
+.empty-cat-star {
+  position: absolute;
+  color: #e0a73c;
+  filter: drop-shadow(0 2px 4px rgba(110, 49, 74, 0.16));
+  animation: empty-cat-twinkle 2.4s ease-in-out infinite;
+}
+
+.star-left {
+  top: -6px;
+  left: -14px;
+  font-size: 22px;
+}
+
+.star-right {
+  right: -15px;
+  bottom: 8px;
+  color: #a94186;
+  font-size: 28px;
+  animation-delay: -1.2s;
+}
+
+.no-tasks-message {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.empty-cat-caption {
+  color: var(--text-color-muted);
+  font-size: 12px;
+}
+
+@keyframes empty-cat-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: rotate(-7deg) scale(0.86);
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate(7deg) scale(1.12);
+  }
 }
 
 .expand-tasks-btn {
@@ -70,5 +143,11 @@
   ::ng-deep .box {
     display: none;
     box-shadow: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-cat-star {
+    animation: none;
   }
 }

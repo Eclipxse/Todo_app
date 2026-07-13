@@ -3,6 +3,30 @@
   [class.exit-animation]="selectedPreset()"
 >
   <div class="onboarding-container">
+    <figure class="cat-welcome-card">
+      <img
+        src="assets/eclipxse/cats/onboarding-planner-kitten.png"
+        [alt]="'ONBOARDING.CAT_ALT' | translate"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <figcaption>{{ 'ONBOARDING.CAT_NOTE' | translate }}</figcaption>
+      <span
+        class="welcome-sparkle sparkle-one"
+        aria-hidden="true"
+        >✦</span
+      >
+      <span
+        class="welcome-sparkle sparkle-two"
+        aria-hidden="true"
+        >⋆</span
+      >
+      <span
+        class="welcome-sparkle sparkle-three"
+        aria-hidden="true"
+        >♡</span
+      >
+    </figure>
     <h1>{{ 'ONBOARDING.TITLE' | translate }}</h1>
     <p class="subtitle">{{ 'ONBOARDING.SUBTITLE' | translate }}</p>
     <div class="presets-grid">

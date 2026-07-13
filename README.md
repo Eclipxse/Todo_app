@@ -13,6 +13,8 @@ with the complete productivity feature set preserved.
 
 - **Strawberry Milk** light theme and **Berry Night** dark theme
 - Pink, cream, and lavender surfaces with rounded task cards
+- Original photorealistic cat artwork for onboarding, empty lists, and celebrations
+- Tiny stars, sparkles, playful cat captions, and reduced-motion support
 - Custom Eclipxse desktop branding and strawberry-heart icon
 - Personalized onboarding and encouraging empty-list messages
 - Responsive styling verified on desktop and phone layouts
@@ -29,7 +31,7 @@ with the complete productivity feature set preserved.
 
 ## Development
 
-The upstream project currently expects Node.js 20 and npm 10.
+The project currently expects the Node.js version declared in `.nvmrc`.
 
 ```powershell
 npm.cmd ci
@@ -55,6 +57,11 @@ npm.cmd run test:file -- src/app/core/browser-title/browser-title.service.spec.t
 
 Task data remains on the device unless the user explicitly configures sync. No
 analytics or tracking were added by this edition.
+
+## Artwork
+
+The three cat images under `src/assets/eclipxse/cats/` were generated specifically
+for Eclipxse. They are original project assets rather than copied Pinterest photos.
 
 ## Attribution and license
 

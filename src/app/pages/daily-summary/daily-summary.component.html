@@ -8,6 +8,26 @@
       <span>{{ T.PDS.SUMMARY_FOR | translate: { dayStr: dayStr } }}</span>
     }
   </h1>
+  @if (isForToday && !cfg?.misc?.isDisableCelebration) {
+    <figure class="celebration-cat-card">
+      <img
+        src="assets/eclipxse/cats/daily-summary-high-five.png"
+        [alt]="'PDS.CAT_CELEBRATION_ALT' | translate"
+        decoding="async"
+      />
+      <figcaption>{{ 'PDS.CAT_CELEBRATION' | translate }}</figcaption>
+      <span
+        class="celebration-star star-one"
+        aria-hidden="true"
+        >✦</span
+      >
+      <span
+        class="celebration-star star-two"
+        aria-hidden="true"
+        >★</span
+      >
+    </figure>
+  }
   <div
     class="daily-summary-summary"
     [class.is-loading-archive]="!isArchiveLoaded()"

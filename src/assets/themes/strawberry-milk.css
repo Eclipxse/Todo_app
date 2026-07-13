@@ -225,6 +225,7 @@ body {
 
 /* A calm strawberry-and-lavender wash behind the workspace. */
 body .app-container {
+  position: relative;
   background-color: transparent !important;
   background-image:
     radial-gradient(circle at 92% 8%, rgba(246, 138, 170, 0.23), transparent 27%),
@@ -233,11 +234,47 @@ body .app-container {
   background-attachment: fixed !important;
 }
 
+/* A faint field of tiny stars makes the workspace feel special without
+ * competing with task text. The decoration is entirely pointer-transparent. */
+body .app-container::before {
+  content: '✦';
+  position: fixed;
+  top: 7vh;
+  left: 4vw;
+  z-index: 0;
+  color: rgba(201, 47, 97, 0.16);
+  font-size: 16px;
+  line-height: 1;
+  text-shadow:
+    16vw 19vh 0 rgba(169, 65, 134, 0.12),
+    38vw 6vh 0 rgba(180, 106, 18, 0.13),
+    59vw 27vh 0 rgba(201, 47, 97, 0.12),
+    81vw 11vh 0 rgba(169, 65, 134, 0.14),
+    10vw 62vh 0 rgba(180, 106, 18, 0.11),
+    34vw 76vh 0 rgba(201, 47, 97, 0.12),
+    67vw 58vh 0 rgba(169, 65, 134, 0.13),
+    88vw 80vh 0 rgba(180, 106, 18, 0.11);
+  pointer-events: none;
+}
+
 body.isDarkTheme .app-container {
   background-image:
     radial-gradient(circle at 92% 8%, rgba(255, 130, 171, 0.16), transparent 28%),
     radial-gradient(circle at 7% 92%, rgba(219, 167, 255, 0.14), transparent 31%),
     linear-gradient(145deg, #1d1623 0%, #211722 48%, #24192b 100%) !important;
+}
+
+body.isDarkTheme .app-container::before {
+  color: rgba(255, 130, 171, 0.2);
+  text-shadow:
+    16vw 19vh 0 rgba(219, 167, 255, 0.16),
+    38vw 6vh 0 rgba(243, 189, 104, 0.15),
+    59vw 27vh 0 rgba(255, 130, 171, 0.16),
+    81vw 11vh 0 rgba(219, 167, 255, 0.16),
+    10vw 62vh 0 rgba(243, 189, 104, 0.14),
+    34vw 76vh 0 rgba(255, 130, 171, 0.15),
+    67vw 58vh 0 rgba(219, 167, 255, 0.15),
+    88vw 80vh 0 rgba(243, 189, 104, 0.13);
 }
 
 body::before {
@@ -336,6 +373,16 @@ body task .box {
 body task:hover .box {
   border-color: rgba(201, 47, 97, 0.28);
   box-shadow: 0 7px 20px rgba(110, 49, 74, 0.12);
+}
+
+body task:hover done-toggle .ico-btn::after {
+  content: '✦';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  color: var(--honey);
+  font-size: 10px;
+  pointer-events: none;
 }
 
 body task.isCurrent .box {

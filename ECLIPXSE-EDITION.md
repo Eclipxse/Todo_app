@@ -11,6 +11,10 @@ theme.
   heart details; and calm high-contrast typography.
 - The desktop shell is named **Eclipxse** and uses a matching strawberry-heart icon.
 - Berry Night keeps the same personality when the system uses dark mode.
+- Original funny-cat artwork appears during onboarding, on empty task lists, and in
+  the end-of-day celebration.
+- Tiny animated stars and sparkles are disabled automatically when reduced motion is
+  preferred.
 
 The original application remains available under the MIT license. Its privacy-first,
 offline-first behavior and data model are unchanged.
