@@ -1,0 +1,448 @@
+/**
+ * Strawberry Milk — a soft, affectionate light theme for Eclipxse.
+ *
+ * The theme stays intentionally calm: cute shapes and color are used as
+ * atmosphere, while task text and controls retain strong contrast.
+ */
+
+body {
+  /* Theme contract */
+  --surface-0: #f6dfe8;
+  --surface-1: #fff7fa;
+  --surface-2: #fffdfd;
+  --surface-3: #fff0f5;
+  --surface-4: #f7eaff;
+  --ink: #5c3445;
+  --ink-strong: #3f2030;
+  --ink-muted: #8f6879;
+  --ink-on-channel: 63, 32, 48;
+  --separator: #efd3de;
+  --divider: #e8c4d2;
+  --scrim: rgba(73, 35, 53, 0.42);
+  --brand: #c92f61;
+  --focus-ring: #a94186;
+
+  /* Strawberry Milk palette */
+  --strawberry: #c92f61;
+  --strawberry-soft: #f68aaa;
+  --strawberry-pale: #ffdce7;
+  --cream: #fffaf2;
+  --lavender: #a94186;
+  --lavender-pale: #f2e5ff;
+  --leaf: #4d8066;
+  --honey: #b46a12;
+
+  /* Material palette */
+  --palette-primary-50: #fff0f5;
+  --palette-primary-100: #ffdce7;
+  --palette-primary-200: #ffb9cd;
+  --palette-primary-300: #f68aaa;
+  --palette-primary-400: #e65d88;
+  --palette-primary-500: var(--strawberry);
+  --palette-primary-600: #b52654;
+  --palette-primary-700: #941e45;
+  --palette-primary-800: #751837;
+  --palette-primary-900: #571229;
+  --palette-accent-100: #f2e5ff;
+  --palette-accent-200: #e4c9fa;
+  --palette-accent-300: #d0a2ec;
+  --palette-accent-400: #b96ed2;
+  --palette-accent-500: var(--lavender);
+  --palette-accent-600: #913674;
+  --palette-accent-700: #762c60;
+  --palette-accent-800: #5d234c;
+  --palette-accent-900: #451a38;
+  --c-primary: var(--strawberry);
+  --c-accent: var(--lavender);
+
+  /* Surfaces and content */
+  --bg: var(--surface-1);
+  --bg-darker: var(--surface-0);
+  --bg-slightly-lighter: #fff9fb;
+  --bg-lighter: var(--surface-2);
+  --bg-lightest: #ffffff;
+  --bg-super-light: #ffffff;
+  --card-bg: rgba(255, 253, 253, 0.94);
+  --sidenav-bg: rgba(255, 246, 250, 0.96);
+  --banner-bg: linear-gradient(135deg, #fff7fa, #f7eaff);
+  --text-color: var(--ink);
+  --text-color-less-intense: #795367;
+  --text-color-muted: var(--ink-muted);
+  --text-color-more-intense: #4c293b;
+  --text-color-most-intense: var(--ink-strong);
+  --standard-note-fg: var(--ink);
+  --standard-note-bg: #fffdf5;
+  --standard-note-bg-hovered: #fff8e8;
+
+  /* Tasks */
+  --task-c-bg: rgba(255, 253, 253, 0.96);
+  --task-c-bg-done: rgba(255, 247, 250, 0.82);
+  --task-c-selected-bg: #fff0f5;
+  --task-c-current-bg: #ffdce7;
+  --task-c-drag-drop-bg: #f2e5ff;
+  --sub-task-c-bg: rgba(255, 250, 252, 0.94);
+  --sub-task-c-bg-done: rgba(255, 247, 250, 0.72);
+  --sub-task-c-bg-in-selected: #fff7fa;
+  --task-border: 1px solid rgba(201, 47, 97, 0.13);
+  --task-border-radius: 18px;
+  --card-border-radius: 22px;
+  --task-shadow: 0 5px 16px rgba(110, 49, 74, 0.08);
+  --task-shadow-sub-task: 0 3px 10px rgba(110, 49, 74, 0.06);
+  --task-current-shadow:
+    0 0 0 2px rgba(201, 47, 97, 0.2), 0 8px 22px rgba(201, 47, 97, 0.15);
+  --task-selected-shadow:
+    0 0 0 2px rgba(169, 65, 134, 0.15), 0 7px 18px rgba(110, 49, 74, 0.1);
+
+  /* Details, borders, and controls */
+  --task-detail-bg: rgba(255, 253, 253, 0.92);
+  --task-detail-bg-hover: #fff0f5;
+  --task-detail-value-color: #795367;
+  --task-detail-shadow: 0 5px 16px rgba(110, 49, 74, 0.08);
+  --extra-border-color: #efd3de;
+  --separator-color: rgba(201, 47, 97, 0.13);
+  --divider-color: var(--divider);
+  --chip-outline-color: rgba(169, 65, 134, 0.28);
+  --input-bg: rgba(255, 253, 253, 0.96);
+  --input-bg-hover: #fff7fa;
+  --input-border-color: rgba(201, 47, 97, 0.22);
+  --scrollbar-thumb: #e7b7c9;
+  --scrollbar-thumb-hover: var(--strawberry-soft);
+  --scrollbar-track: transparent;
+  --close-btn-bg: #fff0f5;
+  --close-btn-border: rgba(201, 47, 97, 0.16);
+  --progress-bg: rgba(201, 47, 97, 0.12);
+  --grid-color: rgba(169, 65, 134, 0.1);
+  --state-hover-alpha: 0.055;
+  --state-focus-alpha: 0.1;
+  --state-pressed-alpha: 0.14;
+  --state-selected-alpha: 0.09;
+  --state-disabled-alpha: 0.4;
+  --card-shadow: 0 10px 30px rgba(110, 49, 74, 0.11);
+  --banner-shadow: 0 10px 28px rgba(169, 65, 134, 0.1);
+}
+
+body.isDarkTheme {
+  /* Berry Night — the same theme, tuned for dark system settings. */
+  --surface-0: #120e17;
+  --surface-1: #1d1623;
+  --surface-2: #2a1f2e;
+  --surface-3: #34253a;
+  --surface-4: #402b45;
+  --ink: #f8e7ef;
+  --ink-strong: #fff7fb;
+  --ink-muted: #c5a4b4;
+  --ink-on-channel: 255, 255, 255;
+  --separator: rgba(255, 158, 190, 0.18);
+  --divider: rgba(255, 183, 207, 0.2);
+  --scrim: rgba(10, 6, 12, 0.72);
+  --brand: #ff82ab;
+  --focus-ring: #dba7ff;
+  --strawberry: #ff82ab;
+  --strawberry-soft: #ff9fbd;
+  --strawberry-pale: #4b2938;
+  --cream: #3b2c30;
+  --lavender: #dba7ff;
+  --lavender-pale: #3b2a48;
+  --leaf: #91c9aa;
+  --honey: #f3bd68;
+  --palette-primary-50: #3d2330;
+  --palette-primary-100: #512a3b;
+  --palette-primary-200: #73374f;
+  --palette-primary-300: #a64c6e;
+  --palette-primary-400: #d7628a;
+  --palette-primary-500: #ff82ab;
+  --palette-primary-600: #ff9fbd;
+  --palette-primary-700: #ffb9cf;
+  --palette-primary-800: #ffd4e1;
+  --palette-primary-900: #ffedf4;
+  --palette-accent-100: #3b2a48;
+  --palette-accent-200: #543663;
+  --palette-accent-300: #764a89;
+  --palette-accent-400: #a36fc0;
+  --palette-accent-500: #dba7ff;
+  --palette-accent-600: #e3b8ff;
+  --palette-accent-700: #eac9ff;
+  --palette-accent-800: #f1ddff;
+  --palette-accent-900: #f9f0ff;
+  --bg: var(--surface-1);
+  --bg-darker: var(--surface-0);
+  --bg-slightly-lighter: #241a29;
+  --bg-lighter: var(--surface-2);
+  --bg-lightest: var(--surface-3);
+  --bg-super-light: var(--surface-4);
+  --card-bg: rgba(42, 31, 46, 0.96);
+  --sidenav-bg: rgba(29, 22, 35, 0.97);
+  --banner-bg: linear-gradient(135deg, #34253a, #3b2a48);
+  --text-color: var(--ink);
+  --text-color-less-intense: #ddc2cf;
+  --text-color-muted: var(--ink-muted);
+  --text-color-more-intense: #fff0f7;
+  --text-color-most-intense: var(--ink-strong);
+  --standard-note-fg: var(--ink);
+  --standard-note-bg: #342c25;
+  --standard-note-bg-hovered: #40352a;
+  --task-c-bg: rgba(42, 31, 46, 0.96);
+  --task-c-bg-done: rgba(34, 25, 38, 0.9);
+  --task-c-selected-bg: #3b2a48;
+  --task-c-current-bg: #4b2938;
+  --task-c-drag-drop-bg: #463452;
+  --sub-task-c-bg: rgba(47, 34, 51, 0.94);
+  --sub-task-c-bg-done: rgba(34, 25, 38, 0.84);
+  --sub-task-c-bg-in-selected: #34253a;
+  --task-border: 1px solid rgba(255, 130, 171, 0.18);
+  --task-shadow: 0 6px 18px rgba(6, 3, 8, 0.26);
+  --task-shadow-sub-task: 0 4px 12px rgba(6, 3, 8, 0.2);
+  --task-current-shadow:
+    0 0 0 2px rgba(255, 130, 171, 0.25), 0 9px 24px rgba(7, 3, 9, 0.34);
+  --task-selected-shadow:
+    0 0 0 2px rgba(219, 167, 255, 0.2), 0 8px 20px rgba(7, 3, 9, 0.3);
+  --task-detail-bg: rgba(48, 34, 52, 0.95);
+  --task-detail-bg-hover: #3b2a48;
+  --task-detail-value-color: #ddc2cf;
+  --task-detail-shadow: 0 6px 18px rgba(6, 3, 8, 0.24);
+  --extra-border-color: rgba(255, 158, 190, 0.18);
+  --separator-color: rgba(255, 158, 190, 0.14);
+  --divider-color: var(--divider);
+  --chip-outline-color: rgba(219, 167, 255, 0.3);
+  --input-bg: rgba(42, 31, 46, 0.96);
+  --input-bg-hover: #34253a;
+  --input-border-color: rgba(255, 130, 171, 0.25);
+  --scrollbar-thumb: #72445b;
+  --scrollbar-thumb-hover: var(--strawberry-soft);
+  --close-btn-bg: #3b2a48;
+  --close-btn-border: rgba(255, 158, 190, 0.18);
+  --progress-bg: rgba(255, 130, 171, 0.15);
+  --grid-color: rgba(219, 167, 255, 0.12);
+  --card-shadow: 0 12px 32px rgba(5, 2, 7, 0.32);
+  --banner-shadow: 0 11px 30px rgba(5, 2, 7, 0.26);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-color);
+  font-family: ui-rounded, 'Segoe UI', system-ui, sans-serif;
+}
+
+/* A calm strawberry-and-lavender wash behind the workspace. */
+body .app-container {
+  background-color: transparent !important;
+  background-image:
+    radial-gradient(circle at 92% 8%, rgba(246, 138, 170, 0.23), transparent 27%),
+    radial-gradient(circle at 7% 92%, rgba(203, 166, 235, 0.22), transparent 30%),
+    linear-gradient(145deg, #fffafc 0%, #fff5f8 48%, #fbf2ff 100%) !important;
+  background-attachment: fixed !important;
+}
+
+body.isDarkTheme .app-container {
+  background-image:
+    radial-gradient(circle at 92% 8%, rgba(255, 130, 171, 0.16), transparent 28%),
+    radial-gradient(circle at 7% 92%, rgba(219, 167, 255, 0.14), transparent 31%),
+    linear-gradient(145deg, #1d1623 0%, #211722 48%, #24192b 100%) !important;
+}
+
+body::before {
+  display: none !important;
+}
+
+/* Header and navigation */
+body main-header .wrapper {
+  background: rgba(255, 250, 252, 0.9);
+  border-bottom: 1px solid rgba(201, 47, 97, 0.12);
+  box-shadow: 0 5px 22px rgba(110, 49, 74, 0.07);
+}
+
+body.isDarkTheme main-header .wrapper {
+  background: rgba(29, 22, 35, 0.93);
+  border-bottom-color: rgba(255, 130, 171, 0.16);
+  box-shadow: 0 6px 24px rgba(5, 2, 7, 0.25);
+}
+
+body main-header .current-work-context-title::after {
+  content: '  ♡';
+  color: var(--strawberry);
+}
+
+body magic-side-nav {
+  border-right: 1px solid rgba(201, 47, 97, 0.13);
+  box-shadow: 5px 0 24px rgba(110, 49, 74, 0.06);
+}
+
+body magic-side-nav .nav-sidenav {
+  background:
+    radial-gradient(circle at 50% 104%, rgba(169, 65, 134, 0.12), transparent 35%),
+    var(--sidenav-bg) !important;
+}
+
+body.isDarkTheme magic-side-nav .nav-sidenav {
+  background:
+    radial-gradient(circle at 50% 104%, rgba(219, 167, 255, 0.13), transparent 35%),
+    var(--sidenav-bg) !important;
+}
+
+body .nav-link {
+  border-radius: 14px;
+}
+
+body .nav-link.active {
+  background: linear-gradient(110deg, #ffdce7, #f2e5ff) !important;
+  color: var(--ink-strong) !important;
+  box-shadow: 0 5px 14px rgba(169, 65, 134, 0.1);
+}
+
+body.isDarkTheme .nav-link.active {
+  background: linear-gradient(110deg, #4b2938, #3b2a48) !important;
+  color: var(--ink-strong) !important;
+  box-shadow: 0 6px 16px rgba(5, 2, 7, 0.24);
+}
+
+body .nav-link.active mat-icon,
+body .nav-link.active .nav-icon {
+  color: var(--strawberry) !important;
+}
+
+/* Cards, dialogs, and notes */
+body .mat-mdc-card,
+body .mat-mdc-dialog-surface,
+body .mat-mdc-menu-panel {
+  border: 1px solid rgba(201, 47, 97, 0.13);
+  border-radius: var(--card-border-radius) !important;
+  background: var(--card-bg) !important;
+  box-shadow: var(--card-shadow);
+}
+
+body note .note,
+body .standard-note {
+  border: 1px solid rgba(180, 106, 18, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(180, 106, 18, 0.08);
+}
+
+body banner .content-wrapper {
+  border: 1px solid rgba(169, 65, 134, 0.15);
+  border-radius: 20px;
+}
+
+/* Task list — soft cards with clear selected/running states. */
+body task .box {
+  border: var(--task-border);
+  border-radius: var(--task-border-radius);
+  box-shadow: var(--task-shadow);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+body task:hover .box {
+  border-color: rgba(201, 47, 97, 0.28);
+  box-shadow: 0 7px 20px rgba(110, 49, 74, 0.12);
+}
+
+body task.isCurrent .box {
+  border-color: rgba(201, 47, 97, 0.3);
+  box-shadow: var(--task-current-shadow);
+}
+
+body task.isSelected .box {
+  border-color: rgba(169, 65, 134, 0.28);
+  box-shadow: var(--task-selected-shadow);
+}
+
+body task.isDone .box {
+  opacity: 0.78;
+}
+
+body done-toggle .ico-btn {
+  border-radius: 50%;
+}
+
+body task.isCurrent done-toggle .ico-btn {
+  box-shadow: 0 0 0 4px rgba(201, 47, 97, 0.12);
+}
+
+/* The global capture bar is the visual “gift ribbon” of the theme. */
+body add-task-bar.global .add-task-container {
+  border: 1px solid rgba(201, 47, 97, 0.22);
+  border-radius: 22px;
+  background: rgba(255, 253, 253, 0.96);
+  box-shadow:
+    0 0 0 4px rgba(246, 138, 170, 0.08),
+    0 12px 30px rgba(110, 49, 74, 0.13);
+}
+
+body.isDarkTheme add-task-bar.global .add-task-container {
+  background: var(--card-bg);
+  box-shadow:
+    0 0 0 4px rgba(255, 130, 171, 0.08),
+    0 13px 32px rgba(5, 2, 7, 0.34);
+}
+
+body add-task-bar.global .add-task-container::before {
+  content: '♡';
+  color: var(--strawberry);
+  margin-inline: var(--s-half);
+}
+
+/* Buttons and chips */
+body .mat-mdc-unelevated-button.mat-primary,
+body .mat-mdc-raised-button.mat-primary {
+  border-radius: 999px !important;
+  background: linear-gradient(115deg, var(--strawberry), #a94186) !important;
+  color: #ffffff !important;
+  box-shadow: 0 7px 16px rgba(201, 47, 97, 0.22) !important;
+}
+
+body .mat-mdc-unelevated-button.mat-primary:hover,
+body .mat-mdc-raised-button.mat-primary:hover {
+  box-shadow: 0 9px 22px rgba(201, 47, 97, 0.3) !important;
+}
+
+body .mat-mdc-standard-chip {
+  border: 1px solid rgba(169, 65, 134, 0.2);
+  border-radius: 999px !important;
+  background: #fbf3ff;
+}
+
+body.isDarkTheme .mat-mdc-standard-chip {
+  background: #3b2a48;
+}
+
+body .mat-mdc-fab,
+body .mat-mdc-mini-fab {
+  box-shadow: 0 8px 20px rgba(201, 47, 97, 0.2) !important;
+}
+
+body right-panel .side {
+  border-left: 1px solid rgba(201, 47, 97, 0.13) !important;
+  background: rgba(255, 250, 252, 0.97) !important;
+  box-shadow: -10px 0 30px rgba(110, 49, 74, 0.08);
+}
+
+body.isDarkTheme right-panel .side {
+  background: rgba(29, 22, 35, 0.97) !important;
+  box-shadow: -11px 0 32px rgba(5, 2, 7, 0.28);
+}
+
+body task-detail-item .input-item,
+body task-detail-item .mat-expansion-panel {
+  border: 1px solid rgba(201, 47, 97, 0.12) !important;
+  border-radius: 16px !important;
+}
+
+body *:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+body ::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--strawberry-soft), #cba6eb);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body task .box {
+    transition: none;
+  }
+}
