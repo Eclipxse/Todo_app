@@ -1,0 +1,153 @@
+@use '../../../../styles/_globals.scss' as *;
+
+:host {
+  display: block;
+  text-align: left;
+  // min-height: 50px;
+  list-style: none;
+  // add a little padding to top and bottom, to make drag dropping easier
+  padding: 5px 0;
+  margin: 0;
+  position: relative;
+
+  ::ng-deep task-list & {
+    margin: var(--s-quarter) 5px 0 5px;
+
+    @include mq(xs, max) {
+      margin: 1px 0 0 10px;
+    }
+  }
+}
+
+// Sub-task drop lists keep their drag-drop padding INSIDE the cdkDropList
+// element (`.task-list-inner`) instead of on :host, so the strip above the
+// first subtask and below the last one becomes part of the CDK drop rect. A
+// task dragged into that strip then enters the list and CDK drops it as the
+// first / last child (SingleAxisSortStrategy._shouldEnterAsFirstChild).
+// Without it, the only target for the first/last slot is half of the edge row,
+// which is awkwardly small to hit (#7905 scenario B). The matching :host
+// padding is dropped for sub-lists so the visible gap stays compact.
+:host-context(.sub-tasks) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.task-list-inner[data-list-id='SUB'] {
+  padding: var(--s) 0;
+}
+
+.done-task-box {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-tasks {
+  @include center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-half);
+  text-align: center;
+  width: min(90%, 330px);
+  margin: var(--s2) auto;
+  padding: var(--s2);
+  border: 1px solid rgba(201, 47, 97, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 250, 252, 0.72);
+  box-shadow: 0 12px 30px rgba(110, 49, 74, 0.09);
+
+  color: var(--text-color-muted);
+}
+
+.empty-cat-frame {
+  position: relative;
+  width: 132px;
+  height: 112px;
+  margin-bottom: var(--s-half);
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 61%;
+    border: 3px solid rgba(255, 255, 255, 0.82);
+    border-radius: 46% 46% 40% 40%;
+    box-shadow:
+      0 0 0 1px rgba(201, 47, 97, 0.12),
+      0 10px 24px rgba(110, 49, 74, 0.14);
+  }
+}
+
+.empty-cat-star {
+  position: absolute;
+  color: #e0a73c;
+  filter: drop-shadow(0 2px 4px rgba(110, 49, 74, 0.16));
+  animation: empty-cat-twinkle 2.4s ease-in-out infinite;
+}
+
+.star-left {
+  top: -6px;
+  left: -14px;
+  font-size: 22px;
+}
+
+.star-right {
+  right: -15px;
+  bottom: 8px;
+  color: #a94186;
+  font-size: 28px;
+  animation-delay: -1.2s;
+}
+
+.no-tasks-message {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.empty-cat-caption {
+  color: var(--text-color-muted);
+  font-size: 12px;
+}
+
+@keyframes empty-cat-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: rotate(-7deg) scale(0.86);
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate(7deg) scale(1.12);
+  }
+}
+
+.expand-tasks-btn {
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.cdk-drag-placeholder,
+.cdk-drag-preview {
+  border-radius: var(--task-border-radius);
+  overflow: hidden;
+
+  ::ng-deep .controls {
+    display: none;
+  }
+  ::ng-deep .box {
+    display: none;
+    box-shadow: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-cat-star {
+    animation: none;
+  }
+}

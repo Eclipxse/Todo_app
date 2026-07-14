@@ -1,0 +1,56 @@
+name: Eclipxse CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eclipxse-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Lint, test, and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out Eclipxse
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Use HTTPS for Git dependencies
+        run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Validate translations
+        run: npm run int:test
+
+      - name: Test shared packages
+        run: npm run packages:test
+
+      - name: Test Eclipxse theme
+        run: npm run test:file -- src/app/core/theme/custom-theme.service.spec.ts
+
+      - name: Test Eclipxse window title
+        run: npm run test:file -- src/app/core/browser-title/browser-title.service.spec.ts
+
+      - name: Build web app
+        run: npm run buildFrontend:stageWeb
