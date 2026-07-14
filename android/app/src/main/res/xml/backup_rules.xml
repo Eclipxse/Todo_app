@@ -4,4 +4,7 @@
   <exclude
     domain="sharedpref"
     path="com.superproductivity.superproductivity_preferences.xml" />
+  <exclude
+    domain="sharedpref"
+    path="com.eclipxse.todo_preferences.xml" />
 </full-backup-content>

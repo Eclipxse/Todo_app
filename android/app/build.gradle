@@ -16,17 +16,19 @@ def releaseConfigFields = getBuildConfigFields(appConfig, false)
 
 android {
     defaultConfig {
-        applicationId "com.superproductivity.superproductivity"
+        // Keep the upstream namespace for source compatibility while giving
+        // Eclipxse its own install identity. This lets both apps coexist.
+        applicationId "com.eclipxse.todo"
         minSdkVersion 24
         targetSdkVersion 36
         compileSdk 36
         versionCode 18_14_00_9000
-        versionName "18.14.0"
+        versionName "18.14.0-eclipxse.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 hostName       : "app.super-productivity.com",
                 defaultUrl     : "https://app.super-productivity.com",
-                launcherName   : "Super Productivity",
+                launcherName   : "Eclipxse",
                 assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], ' +
                         '"target": {"namespace": "web", "site": "https://app.super-productivity.com"}}]'
         ]
