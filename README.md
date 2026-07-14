@@ -114,6 +114,25 @@ workflow**. The workflow creates both:
 These personal builds are not signed with a commercial code-signing certificate,
 so Windows SmartScreen may ask for confirmation the first time they open.
 
+### Android build
+
+Open **Actions → Build Eclipxse for Android → Run workflow**. When the run
+finishes, download the `Eclipxse-Todo-Android` artifact and extract:
+
+- `Eclipxse-Todo-Android.apk` — the installable Android application
+- `SHA256SUMS.txt` — a checksum for verifying the download
+
+The Android edition has its own `com.eclipxse.todo` application ID, so it can be
+installed beside the official Super Productivity app. It starts in offline-first
+mode and uses the same private, local task storage model as the desktop edition.
+
+This personal APK is debug-signed rather than Play Store signed. Android will ask
+you to allow installation from the browser or file manager used to open it. Only
+install APKs downloaded from this repository's own Actions page. Until a permanent
+private signing key is configured, installing a later Actions build may require
+uninstalling the earlier Eclipxse build first; export or sync important tasks before
+doing that.
+
 ### Run from source
 
 Use the Node.js version declared in `.nvmrc`.

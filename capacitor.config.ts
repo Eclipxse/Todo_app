@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.super-productivity.app',
-  appName: 'Super Productivity',
+  appId: 'com.eclipxse.todo',
+  appName: 'Eclipxse',
   webDir: 'dist/browser',
   plugins: {
     CapacitorHttp: {
@@ -10,7 +10,7 @@ const config: CapacitorConfig = {
     },
     LocalNotifications: {
       // Android-specific: small icon for notification
-      smallIcon: 'ic_stat_sp',
+      smallIcon: 'ic_stat_eclipxse',
     },
     Keyboard: {
       // iOS-only: Android excludes @capacitor/keyboard via includePlugins below
